@@ -43,14 +43,14 @@ let solve_game_2 line =
 
 let solve f file =
   let channel = open_in file in
-  let rec parse' sum =
+  let rec parse sum =
     match input_line channel with
-    | line -> parse' (f line + sum)
+    | line -> parse (f line + sum)
     | exception End_of_file ->
       close_in channel;
       print_int sum
   in
-  parse' 0
+  parse 0
 ;;
 
 let () =
